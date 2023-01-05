@@ -1,16 +1,23 @@
-//import { useState } from 'react'
+import React, { useState } from 'react'
 //import reactLogo from './assets/react.svg'
 import './styles.css';
 
 import { Card } from '../../componentes/Card';
 
 export function Home() {
-  //const [count, setCount] = useState(0)
+
+  const [tarefasName, setTarefasName] = useState();
+
 
   return (
     <div className="container">
     <h1>Lista de Tarefas</h1>
-    <input type="text" placeholder="Digite uma tarefa..." />
+    <p>{tarefasName}</p>
+    <input 
+      type="text" 
+     placeholder="Digite uma tarefa..." 
+     onChange={e => setTarefasName(e.target.value)}
+    />
     
     <button type="button">Adicionar</button>
 
