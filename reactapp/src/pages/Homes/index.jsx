@@ -9,16 +9,15 @@ export function Home() {
 
   return (
     <div className="container">
-    <h1>Lista de Presença</h1>
-    <input type="text" placeholder="Digite o nome..." />
+    <h1>Lista de Tarefas</h1>
+    <input type="text" placeholder="Digite uma tarefa..." />
+    
     <button type="button">Adicionar</button>
 
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
+    <Card name="Devocional" time="1h30"/>
+    <Card name="Estudar Frontend" time="2h00"/>
+    <Card name="Estudar Administração" time="1h00"/>
+    <Card name='Estudar Psicologia' time='1h00'/>
     </div>
   )
 }
