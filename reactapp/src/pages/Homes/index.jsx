@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 //import reactLogo from './assets/react.svg'
 import './styles.css';
+import FotoPerfil from '../../assets/img/perfil.png';
 
 import { Card } from '../../componentes/Card';
+
+
 
 export function Home() {
 
@@ -19,6 +22,9 @@ export function Home() {
 
   // estado e função para armazenar as tarefas da lista de tarefas
   const [tarefas, setTarefas] = useState([]);
+
+  // dados do usuário
+  const [user, setUser] = useState({name: '', avatar: ''})
 
   // criando um novo objeto
   function handleAddTarefa(){
@@ -37,9 +43,48 @@ export function Home() {
       document.getElementById('inputName').focus();
   }
 
+
+useEffect(() => {
+  //corpo do useEffect
+  
+  //consumindo  informações de uma API para pegar o nome e a foto do perfil do github
+  /*async function fetchData(){
+   const response = await fetch('https://api.github.com/users/geraldoneto771')
+   const data = await response.json();
+  
+      setUser ({
+        name: data.name,
+        avatar: data.avatar_url,
+        
+      });
+  }
+  fetchData();
+*/
+
+  /*
+  fetch('https://api.github.com/users/geraldoneto771')
+  .then(response  => response.json())
+  .then(data => {
+      setUser ({
+        name: data.name,
+        avatar: data.avatar_url,
+        
+      })
+  })
+   */
+}, []); 
+
   return (
     <div className="container">
-    <h1>Meu Planner 2023</h1>
+    <header>
+      <h1>Meu Planner 2023</h1>
+      <div>
+        {/*<strong>{user.name}</strong>*/}
+         {/*<img src={user.avatar} alt="Foto de perfil" />*/}
+         <strong>Geraldo Neto</strong>
+         <img src={FotoPerfil} alt="Foto de perfil" />
+      </div>
+    </header>
     
     <p>{today.toLocaleString("pt-BR", options)}</p>
     <input id='inputName'
@@ -52,13 +97,21 @@ export function Home() {
       Adicionar</button>
 
     {
-      tarefas.map(tarefa => <Card name={tarefa.name} time={tarefa.time}/>)
+      tarefas.map(tarefa => (
+      <Card 
+        key = {tarefa.time}
+        name={tarefa.name} 
+        time={tarefa.time}
+
+      />
+    ))
       
     }
     
     </div>
   )
 }
+
 
 // IDEIAS PARA IMPLEMENTAR
 /*
